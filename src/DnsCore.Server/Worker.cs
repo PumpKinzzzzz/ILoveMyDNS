@@ -1,6 +1,6 @@
 namespace DnsCore.Server;
 
-public class Worker : BackgroundService
+public partial class Worker : BackgroundService
 {
     private readonly ILogger<Worker> _logger;
 
@@ -15,9 +15,12 @@ public class Worker : BackgroundService
         {
             if (_logger.IsEnabled(LogLevel.Information))
             {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                LogWorkerRunning(DateTimeOffset.Now);
             }
             await Task.Delay(1000, stoppingToken);
         }
     }
+
+    [LoggerMessage(Level = LogLevel.Information, Message = "Worker running at: {Time}")]
+    private partial void LogWorkerRunning(DateTimeOffset time);
 }
