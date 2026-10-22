@@ -44,3 +44,7 @@ dotnet_naming_style.underscore_camel_case.capitalization = camel_case
 dotnet_naming_rule.private_fields_underscore_camel_case.symbols = private_fields
 dotnet_naming_rule.private_fields_underscore_camel_case.style = underscore_camel_case
 dotnet_naming_rule.private_fields_underscore_camel_case.severity = suggestion
+
+# Tests : les underscores dans les noms de méthodes sont voulus (Sujet_Comportement)
+[tests/**.cs]
+dotnet_diagnostic.CA1707.severity = none
