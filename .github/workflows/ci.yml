@@ -32,7 +32,13 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test --configuration Release --no-build
+        run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage" --settings coverlet.runsettings --results-directory coverage
+
+      - name: Coverage summary
+        run: |
+          dotnet tool restore
+          dotnet reportgenerator -reports:"coverage/**/coverage.cobertura.xml" -targetdir:coverage/report -reporttypes:MarkdownSummaryGithub
+          cat coverage/report/SummaryGithub.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Verify formatting
         run: dotnet format --verify-no-changes --no-restore
