@@ -1,0 +1,27 @@
+name: Feature
+description: Propose a piece of work (feature or technical task)
+labels: ["type:feature"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why this work is needed and which problem it solves.
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      description: The concrete steps, one checkbox per task.
+      value: "- [ ] "
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: What must be true for the issue to be done. Each criterion must be verifiable.
+      value: "- "
+    validations:
+      required: true
